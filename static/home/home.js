@@ -1,4 +1,3 @@
-console.log('aa');
 let arrow_1 = document.querySelector("#arrow-1");
 let arrow_2 = document.querySelector("#arrow-2");
 let arrow_3 = document.querySelector("#arrow-3");
@@ -22,13 +21,33 @@ arrow_5.onclick = () => {
     arrow_5.classList.toggle("rotate-5")
 }
 
-var app = new Vue({
-    delimiters: ["[[", "]]"],
-    el:'#app',
-    data(){
-        return{
-            multiChecked: ["blue", "Green"]
-        }
-        //複数のcheckbox
+
+const accSingleTriggers = document.querySelectorAll('.js-acc-single-trigger');
+
+accSingleTriggers.forEach(trigger => trigger.addEventListener('click', toggleAccordion));
+
+function toggleAccordion() {
+  const items = document.querySelectorAll('.js-acc-item');
+  const thisItem = this.parentNode;
+
+  items.forEach(item => {
+    if (thisItem == item) {
+      thisItem.classList.toggle('is-open');
+      return;
     }
-})
+    item.classList.remove('is-open');
+  });
+}
+
+function clickBtn1() {
+    const arr = [];
+    const chk1 = document.form1.chk1;
+
+    for (let i = 0; i < chk1.length; i++) {
+      if (chk1[i].checked) {//(chk1[i].checked === true)と同じ
+        arr.push(chk1[i].value);
+      }
+    }
+    document.getElementById("span1").textContent = arr;
+  }
+

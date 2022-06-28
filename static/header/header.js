@@ -1,4 +1,4 @@
-console.log('aa');
+/* ハンバーガーメニュー */
 let nav = document.querySelector("#navArea");
 let btn = document.querySelector(".toggle-btn-header");
 let mask = document.querySelector("#mask");

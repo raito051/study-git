@@ -6,93 +6,69 @@
 {% endblock %}
 
 {% block content %}
-<strong class="circle-search">
-    <div>
-        <h2>サークル</h2>
-        <ul class="circle-type">
-            <li class="circle-type-motion">
-                <p>運動系</p>
-                <ul class="motion-type">
-                    <li>
-                        <img src="{% static 'home/home-img/ball_games.jpg' %}" alt="ball-games">
-                        <input id="acd-check1" class="acd-check" type="checkbox">
-                        <label class="acd-label" for="acd-check1">球技</label>
-                        <div class="acd-content">
-                            <div id="app">
-                                <p>■checkboxでv-modelを使う</p>
-                           
-                                <input type="checkbox" id="red" v-model="multiChecked" value="red">
-                                <label for="red">Red</label>
-                           
-                                <input type="checkbox" id="blue" v-model="multiChecked" value="blue">
-                                <label for="blue">Blue</label>
-                           
-                                <input type="checkbox" id="green" v-model="multiChecked" value="green">
-                                <label for="green">Green</label>
-                           
-                                <br>
-                           
-                                <p>プロパティの値: [[multiChecked]]</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{% static 'home/home-img/indoor.jpg' %}" alt="indoor">
-                        <ul class="motion-type-item-2">
-                            <li>
-                                <p>インドアスポーツ</p>
-                            </li>
-                            <li>
-                                <a class="arrow" id="arrow-2"></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{% static 'home/home-img/outdoors.jpg' %}" alt="outdoors">
-                        <ul class="motion-type-item-3">
-                            <li>
-                                <p>アウトドアスポーツ</p>
-                            </li>
-                            <li>
-                                <a class="arrow" id="arrow-3"></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{% static 'home/home-img/winter_sports.jpg' %}" alt="wintter_sports">
-                        <ul class="motion-type-item-4">
-                            <li>
-                                <p>ウィンタースポーツ</p>
-                            </li>
-                            <li>
-                                <a class="arrow" id="arrow-4"></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{% static 'home/home-img/others.jpg' %}" alt="others">
-                        <ul class="motion-type-item-5">
-                            <li>
-                                <p>その他</p>
-                            </li>
-                            <li>
-                                <a class="arrow" id="arrow-5"></a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+<img src="{% static 'home/home-img/waseda.png' %}" alt="waseda">
+
+<strong>
+    <div class="introduction">
+        <h2 class="introduction-title">contents</h2>
+        <ul class="introduction-contents">
+            <li>
+                <div class="introduction-contents-item-1">
+                    <h2>サークルをお探しの方へ</h2>
+                    <p>texttexttexttexttexttexttexttexttexttext
+                    texttexttexttexttexttexttexttexttexttext
+                    texttexttexttexttexttexttexttexttexttext
+                    texttexttexttexttexttext</p>
+                </div>
             </li>
             <li>
-                <p>文科系</p>
+                <div class="introduction-contents-item-2">
+                    <h2>サークル長へ</h2>
+                    <p>texttexttexttexttexttexttexttexttexttext
+                        texttexttexttexttexttext</p>
+                </div>
             </li>
         </ul>
     </div>
 </strong>
-<p>aa</p>
 
-<div id="app1">
-    [[ message ]]
-</div>
+<strong class="circle-search" id="app">
+    <div>
+        <h2>circle search</h2>
+        <ul class="circle-type">
+            <li>
+                <p>運動系</p>
+                <ul class="circle-type-item">
+                    {% for lists in object_list %}
+                    <li>
+                        <button onclick="location.href='detail/motion/{{ lists.id }}'">
+                            <ul class="circle-type-item-list">
+                                <li><img src= {{lists.images}} alt="img"></li>
+                                <li><p>{{lists.name}}</p></li>
+                            </ul>
+                        </button>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li>
+                <p>文科系</p>
+                <ul class="circle-type-item">
+                    {% for lists in culture_list %}
+                    <li>
+                        <button onclick="location.href='detail/culture/{{ lists.id }}'">
+                            <ul class="circle-type-item-list">
+                                <li><img src= {{lists.images}} alt="img"></li>
+                                <li><p>{{lists.name}}</p></li>
+                            </ul>
+                        </button>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+</strong>
 
 <script src="{% static 'home/home.js' %}" ></script>
 <script src="{% static 'home/home2.js' %}"></script>
