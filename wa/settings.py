@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'home',
+    'home_top',
 ]
 
 MIDDLEWARE = [
@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'wa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'wa_project',
+        'USER': 'root',
+        'PASSWORD': 'wa_project',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
