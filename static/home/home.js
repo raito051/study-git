@@ -1,53 +1,101 @@
-let arrow_1 = document.querySelector("#arrow-1");
-let arrow_2 = document.querySelector("#arrow-2");
-let arrow_3 = document.querySelector("#arrow-3");
-let arrow_4 = document.querySelector("#arrow-4");
-let arrow_5 = document.querySelector("#arrow-5");
-
-let nav_item_1 = document.querySelector('#nav-item');
-arrow_2.onclick = () => {
-    arrow_2.classList.toggle("rotate-2")
-}
-
-arrow_3.onclick = () => {
-    arrow_3.classList.toggle("rotate-3")
-}
-
-arrow_4.onclick = () => {
-    arrow_4.classList.toggle("rotate-4")
-}
-
-arrow_5.onclick = () => {
-    arrow_5.classList.toggle("rotate-5")
-}
-
-
-const accSingleTriggers = document.querySelectorAll('.js-acc-single-trigger');
-
-accSingleTriggers.forEach(trigger => trigger.addEventListener('click', toggleAccordion));
-
-function toggleAccordion() {
-  const items = document.querySelectorAll('.js-acc-item');
-  const thisItem = this.parentNode;
-
-  items.forEach(item => {
-    if (thisItem == item) {
-      thisItem.classList.toggle('is-open');
-      return;
+var app = new Vue ({
+  delimiters: ["[[", "]]"],
+  el: '#app',
+  mounted() {
+    const container = document.querySelector('.container')
+    for(var i=0;i<=50; i++){
+      const blocks = document.createElement('div');
+      blocks.classList.add('blocks');
+      container.appendChild(blocks)
     }
-    item.classList.remove('is-open');
-  });
-}
-
-function clickBtn1() {
-    const arr = [];
-    const chk1 = document.form1.chk1;
-
-    for (let i = 0; i < chk1.length; i++) {
-      if (chk1[i].checked) {//(chk1[i].checked === true)と同じ
-        arr.push(chk1[i].value);
+    anime({
+      targets: '.first-circle ', // 対象を指定
+      translateY: [
+        {value:350,duration: 1000, delay: 500 },
+      ],
+      translateX: [
+        {value:1000,duration: 1000, delay:5000}
+      ],
+      easing: 'cubicBezier(.5, .05, .1, .3)'
+    });
+    anime({
+      targets: '.blocks',
+      translateX: function(){
+        return anime.random(-800,700)
+      },
+      translateY: function(){
+        return anime.random(-300,250)
+      },
+      scale: function(){
+        return anime.random(0.1,0.2,)
       }
-    }
-    document.getElementById("span1").textContent = arr;
+    })
+    anime({
+      targets: '.left-triangle ', // 対象を指定
+      translateX: -120,
+      duration: 570,
+      easing: 'cubicBezier(.5, .05, .1, .3)'
+    });
+    anime({
+      targets: '.bottom-square',
+      translateY: 330,
+      duration: 1000,
+      delay: 700,
+      easing: 'cubicBezier(.5, .05, .1, .3)'
+    });
+    anime({
+      targets: '.right-triangle',
+      translateX: 300,
+      duration: 1000,
+      delay: 1800,
+      easing: 'cubicBezier(.5, .05, .1, .10)'
+    });
+    anime({
+      targets: '.top-square',
+      translateY: -1300,
+      duration: 500,
+      delay: 2800,
+      easing: 'cubicBezier(.5, .05, .1, .3)'
+    });
   }
+})
 
+ScrollReveal().reveal('.introduction-title', { 
+  duration: 800, 
+  viewFactor: 0.4, 
+  reset: true,   
+  origin:'bottom',
+  distance: '50px',
+});
+
+ScrollReveal().reveal('.introduction-contents-item-1', { 
+  duration: 800, 
+  viewFactor: 0.4, 
+  reset: true,   
+  origin:'left',
+  distance: '50px',
+});
+
+ScrollReveal().reveal('.introduction-contents-item-2', { 
+  duration: 800, 
+  viewFactor: 0.4, 
+  reset: true,   
+  origin:'right',
+  distance: '50px',
+});
+
+ScrollReveal().reveal('.circle-search div h2', { 
+  duration: 800, 
+  viewFactor: 0.4, 
+  reset: true,   
+  origin:'bottom',
+  distance: '50px',
+});
+
+ScrollReveal().reveal('.circle-type-item-list', { 
+  duration: 800, 
+  viewFactor: 0.4, 
+  reset: true,   
+  origin:'bottom',
+  distance: '50px',
+});

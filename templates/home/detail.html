@@ -6,29 +6,31 @@
 {% endblock %}
 
 {% block content %}
-{% if event_motion_model != NONE%}
-<h1>{{ event_motion_model.name }}</h1>
-{% else %}
-<h1>{{ event_model.name }}</h1>
-{% endif %}
-
-<section>
-    <div id="app">
+<div id="app">
+    <ul class="sports-list">
+        <!--スポーツ名-->
         {% for list in sports_list %}
-        <div>
-            <button v-on:click="select($event)" class="alert_btn" id="{{ list }}">
-                {{list}}
-            </button>
-        </div>
+        <li class="sports-list-li">
+            <input type="checkbox" id="{{list}}" v-model="items" value="{{ list }}">
+            <label for="{{list}}">{{list}}</label>
+        </li>
         {% endfor %}
-        <p v-if="togel">aa</p>
-        <p v-else>bb</p>
-        <div v-for="item in items" :key="item.message">
-            <p>[[ item ]]</p>
-        </div>
-    </div>
-</section>
+    </ul>
 
+
+    <template v-for="item in items">
+        [[item]]
+    </template>
+
+    <!--サークル一覧-->
+    {% for list in sports_list %}
+    <ul>
+        <template v-for="item in items">
+            <li v-if="'{{list}}' == item">cc</li>
+        </template>
+    </ul>
+    {% endfor %}
+</div>
 
 
 <script src="{% static 'home/detail.js' %}"></script>

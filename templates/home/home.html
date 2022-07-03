@@ -6,9 +6,23 @@
 {% endblock %}
 
 {% block content %}
+<!--ファーストイメージ-->
 <img src="{% static 'home/home-img/waseda.png' %}" alt="waseda">
 
-<strong>
+
+<div id="app">
+    <div class="first-circle"></div>
+    <div class="top-square"></div>
+    <div class="right-triangle" ></div>
+    <div class="bottom-square"></div>
+    <div class="left-triangle" ></div>
+    <div class="container"></div>
+</div>
+
+
+
+<!--サイト紹介-->
+<strong >
     <div class="introduction">
         <h2 class="introduction-title">contents</h2>
         <ul class="introduction-contents">
@@ -32,11 +46,14 @@
     </div>
 </strong>
 
-<strong class="circle-search" id="app">
+
+<!--検索-->
+<strong class="circle-search" >
     <div>
         <h2>circle search</h2>
         <ul class="circle-type">
             <li>
+                <!--運動系検索-->
                 <p>運動系</p>
                 <ul class="circle-type-item">
                     {% for lists in object_list %}
@@ -51,6 +68,7 @@
                     {% endfor %}
                 </ul>
             </li>
+            <!--文科系検索-->
             <li>
                 <p>文科系</p>
                 <ul class="circle-type-item">
@@ -70,6 +88,7 @@
     </div>
 </strong>
 
+
+<script src="https://unpkg.com/scrollreveal"></script>
 <script src="{% static 'home/home.js' %}" ></script>
-<script src="{% static 'home/home2.js' %}"></script>
 {% endblock %}
